@@ -10,5 +10,15 @@ class User < ActiveRecord::Base
 
   validates :role , presence: true, inclusion: { in: %w(supervisor trainer),
             message: "%{role} is not a valid role"}
+
+  # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+
+
 end
 

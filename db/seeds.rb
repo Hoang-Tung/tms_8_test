@@ -1,13 +1,13 @@
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+             role: "supervisor")
 
 User.create!(name:  "Minh Teo",
              email: "minhld1709@gmail.com",
              password:              "123456",
-             password_confirmation: "123456",
-             role: "supervisor")
+             password_confirmation: "123456")
 		
 
 # 99.times do |n|
