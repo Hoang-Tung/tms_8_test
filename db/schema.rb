@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 20150129070809) do
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255
     t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "remember_digest", limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "password_digest", limit: 255
     t.string   "role",            limit: 255, default: "trainer"
   end
 
