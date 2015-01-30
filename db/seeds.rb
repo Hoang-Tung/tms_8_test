@@ -19,3 +19,15 @@ User.create!(name:  "Minh Teo",
                password:              password,
                password_confirmation: password)
 end
+
+10.times do |n|
+  name = "course #{n + 1}"
+  level = "#{5}"
+  status = "#{1}"
+  info = "it's good"
+  Course.create!(name: name,
+                 total_level: level,
+                 status: status,
+                 info: info
+                )
+end

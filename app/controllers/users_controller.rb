@@ -66,10 +66,10 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       flash[:danger] = "Vao nham hang roai, moi te ra cho -_- , get out now!!!"
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to root_url unless current_user?(@user)
     end
 
     def supervisor_user
-      redirect_to (root_url) unless supervisor?(@user)
+      redirect_to root_url unless current_user.is_supervisor?
     end
 end
