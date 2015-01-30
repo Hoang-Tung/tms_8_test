@@ -1,10 +1,10 @@
 <% provide(:title, 'All course') %>
 <h1>All course</h1>
 
+<%= link_to "Create new course", creatcourse_path, class: "btn btn-lg btn-primary" %>
+
+<%= will_paginate %>
 <ul class="course">
-  <% @courses.each do |course| %>
-    <li>
-      <%= link_to course.name, course %>
-    </li>
-  <% end %>
+  <%= render @courses %>
 </ul>
+<%= will_paginate %>
