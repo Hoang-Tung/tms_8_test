@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user ,  only: [:edit, :update]
+  before_action :correct_user,  only: [:edit, :update]
   before_action :supervisor_user, only: [:destroy, :new]  
 
   def index
-    @users = User.paginate(page: params[:page])
+    if current_user.is_supervisor?
+      @users = User.paginate(page: params[:page])
+    else      
+      @users = User.paginate(page: params[:page]).where(:role => "trainer")
+    end    
   end
 
   def new
@@ -65,12 +69,19 @@ class UsersController < ApplicationController
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      flash[:danger] = "Vao nham hang roai, moi te ra cho -_- , get out now!!!"
-      redirect_to(root_url) unless current_user?(@user)
+
+      if current_user.is_trainer? || current_user =! @user  
+        flash[:danger] = "Vao nham hang roai, moi te ra cho -_- , get out now!!!"
+        redirect_to(root_url) unless current_user?(@user)
+      end
     end
 
     def supervisor_user
-      flash[:danger] = "Xin loi be khong co quyen nay ^_^ bye bye!"
-      redirect_to root_url unless current_user.is_supervisor?
+      if !current_user.is_supervisor?
+        flash[:danger] = "Xin loi be khong co quyen nay ^_^ bye bye!"
+        redirect_to root_url 
+      end
     end
+
+
 end

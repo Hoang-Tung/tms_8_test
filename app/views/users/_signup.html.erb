@@ -1,0 +1,3 @@
+<% if current_user.is_supervisor?%>
+	<%= link_to "Sign up Trainer!", signup_path, class: "btn btn-lg btn-primary" %>
+<% end %>

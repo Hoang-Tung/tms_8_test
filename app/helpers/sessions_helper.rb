@@ -50,8 +50,4 @@ module SessionsHelper
 		session[:forwarding_url] = request.url if request.get?
 	end
 
-	def supervisor?(user)
-		user.role == "supervisor"
-	end	
-
 end

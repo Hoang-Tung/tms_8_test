@@ -43,5 +43,9 @@ class User < ActiveRecord::Base
   def is_supervisor?
     self.role == "supervisor"
   end 
+
+  def is_trainer?
+    self.role == "trainer"
+  end
 end
 

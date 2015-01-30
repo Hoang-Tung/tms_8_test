@@ -1,2 +1,6 @@
 # find all users named David who are Code Artists and sort by created_at in reverse chronological order
 users = User.where(name: 'David', occupation: 'Code Artist').order('created_at DESC')
+
+
+tam thoi chua co giai phap cho vua xac nhan correct_user vua supervisor
+=> nen su dung ham test ca 2 trong correct_user , only: [:edit, :update]
