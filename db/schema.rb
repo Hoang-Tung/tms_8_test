@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129070809) do
+ActiveRecord::Schema.define(version: 20150130021738) do
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "total_level", limit: 4
+    t.string   "info",        limit: 255
+    t.integer  "status",      limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "courses", ["name"], name: "index_courses_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255
