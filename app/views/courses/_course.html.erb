@@ -1,8 +1,10 @@
 <li>
-  
-  <%= link_to course.name, course %>
-
-  <%= link_to "delete", course, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-
+  <%= link_to course.name, course %>  
+  <% if current_user.is_supervisor? %>
+  | <%= link_to "delete", course, method: :delete, data: { confirm: "You sure?" } %>
+  | <%= link_to "edit", edit_course_path(course) %> 
+  <% end %>
+  <% if current_user.is_trainer? %>
+  | <%= link_to "register","#" %>
+  <% end %>
 </li>

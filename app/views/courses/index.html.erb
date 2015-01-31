@@ -1,8 +1,8 @@
 <% provide(:title, 'All course') %>
 <h1>All course</h1>
-
+<% if current_user.is_supervisor? %>
 <%= link_to "Create new course", creatcourse_path, class: "btn btn-lg btn-primary" %>
-
+<% end %>
 <%= will_paginate %>
 <ul class="course">
   <%= render @courses %>
