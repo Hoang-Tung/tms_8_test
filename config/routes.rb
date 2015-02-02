@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'subjects/new'
+
   root "static_pages#home"
   get "help" => "static_pages#help"
   get "contact" => "static_pages#contact"
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   resources  :users
   resources  :courses
+  resources  :subjects
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

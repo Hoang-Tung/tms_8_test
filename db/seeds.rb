@@ -34,3 +34,17 @@ end
   info = "it's good"
   Course.create!(name: name, total_level: level, info: info, status: status )
 end
+
+5.times do |n|
+  name = "belong to course 1"
+  level = 3
+  status = 1
+  info = "ruby"
+  Subject.create!(name:name, total_level: level, info: info, status: status)
+end
+
+5.times do |n|
+  course_id = 1
+  subect_id = n + 1
+  CourseSubject.create!(course_id: course_id, subject_id: subect_id)
+end

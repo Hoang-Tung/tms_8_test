@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130021738) do
+ActiveRecord::Schema.define(version: 20150202024311) do
+
+  create_table "course_subjects", force: :cascade do |t|
+    t.integer  "course_id",  limit: 4
+    t.integer  "subject_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "course_subjects", ["course_id", "subject_id"], name: "index_course_subjects_on_course_id_and_subject_id", unique: true, using: :btree
+  add_index "course_subjects", ["course_id"], name: "index_course_subjects_on_course_id", using: :btree
+  add_index "course_subjects", ["subject_id"], name: "index_course_subjects_on_subject_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -23,6 +34,15 @@ ActiveRecord::Schema.define(version: 20150130021738) do
   end
 
   add_index "courses", ["name"], name: "index_courses_on_name", unique: true, using: :btree
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "total_level", limit: 4
+    t.integer  "status",      limit: 4
+    t.string   "info",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255
